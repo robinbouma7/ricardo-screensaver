@@ -1,5 +1,6 @@
 #include "gameObject.hpp"
 #include "textureManager.hpp"
+
 int xborder;
 int yborder;
 bool up = false;
@@ -10,6 +11,7 @@ gameObject::gameObject(const char* texturesheet, int x, int y) {
 	objTexture = TextureManager::loadTexture(texturesheet);
 	xpos = x;
 	ypos = y;
+	cornerhits = 0;
 }
 void gameObject::initGameObject(int width, int height) {
 	xborder = width - 50;
@@ -38,6 +40,7 @@ void gameObject::update() {
 	else {
 
 	}
+	
 
 
 	if (up) {
@@ -55,6 +58,27 @@ void gameObject::update() {
 		xpos++;
 	}
 
+	if (xpos == 0 && ypos == 0) {
+		cornerhits++;
+		std::cout << "corner hit top left!!\n";
+	}
+	else if (xpos == xborder && ypos == 0) {
+		cornerhits++;
+		std::cout << "corner hit top right!!!\n";
+	}
+	else if (xpos == 0 && ypos == yborder) {
+		cornerhits++;
+		std::cout << "corner hit bottom left!!!\n";
+	}
+	else if (xpos == xborder && ypos == yborder) {
+		cornerhits++;
+		std::cout << "corner hit bottom right!!!\n";
+	}
+	else {
+
+	}
+	
+	
 
 	srcRect.h = 25;
 	srcRect.w = 25;

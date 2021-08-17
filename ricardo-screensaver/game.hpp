@@ -25,6 +25,8 @@ public:
 
 	int screenWidth;
 	int screenHeight;
+	void InitDiscord();
+	void UpdatePresence();
 
 private:
 	int cnt = 0;
